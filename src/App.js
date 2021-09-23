@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+var myEditor;
+
+function printEditorData() {
+  console.log(myEditor.getData())
+}
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+              <h2>Jsramverk Texteditor</h2>
+              <button onClick={printEditorData}>Spara</button>
+                <CKEditor
+                    editor={ ClassicEditor }
+                    data="<p>Välkommen!</p>"
+                    onReady={ editor => {
+                      myEditor = editor;
+                        console.log( 'Editor is ready to use!', editor );
+                    } }
+                    
+                />
+            </div>
+        );
+    }
 }
 
 export default App;
