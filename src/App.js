@@ -8,13 +8,13 @@ var docsMap = new Map();
 var createNew = true;
 
 function fetchAllDocsPrint() {
-  return fetch("http://localhost:1337/doclist")
+  return fetch("http://jsramverk-editor-adja20.azurewebsites.net/doclist")
     .then((response) => response.json())
     .then((data) => printAllDocs(data));
 }
 
 function fetchAllDocs() {
-  return fetch("http://localhost:1337/doclist")
+  return fetch("http://jsramverk-editor-adja20.azurewebsites.net/doclist")
     .then((response) => response.json())
     .then((data) => renderDropdown(data));
 }
@@ -33,7 +33,7 @@ function createNewDoc(docName, docContent) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name: docName, content: docContent })
   };
-  fetch('http://localhost:1337/', postData);
+  fetch('http://jsramverk-editor-adja20.azurewebsites.net/', postData);
 }
 
 function updateDoc(docId, docName, docContent) {
@@ -42,7 +42,7 @@ function updateDoc(docId, docName, docContent) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ _id: docId, name: docName, content: docContent })
   };
-  fetch('http://localhost:1337/', putData);
+  fetch('http://jsramverk-editor-adja20.azurewebsites.net/', putData);
 }
 
 function onOptionClick() {
